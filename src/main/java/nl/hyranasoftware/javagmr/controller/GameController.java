@@ -55,20 +55,6 @@ public class GameController {
             //String gamesNode = mapper.readTree(response).get("Games").toString();
             List<Game> games = mapper.readValue(response, new TypeReference<List<Game>>() {
             });
-            class PlayersTask implements Runnable {
-
-                List<Game> games;
-
-                PlayersTask(List<Game> s) {
-                    games = s;
-                }
-
-                public void run() {
-                    for (Game g : games) {
-                        g.getPlayersFromGMR();
-                    }
-                }
-            }
             Collections.sort(games);
             Collections.reverse(games);
             return games;
