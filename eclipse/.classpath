@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="githubupdater/src/main/java"/>
+	<classpathentry kind="src" path="src/main/resources"/>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="controlsfx-8.40.14.jar"/>
+	<classpathentry kind="lib" path="javaGMR-0.3.4.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
