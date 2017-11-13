@@ -241,4 +241,25 @@ public class GameController {
 
     }
 
+    public List<Game> getGamesForPlayer() {
+        GMRLogger.logLine("TODO: implement GetGamesForPlayer");
+
+        try {
+            String requestUrl = "http://multiplayerrobot.com/api/Diplomacy/GetGamesForPlayer";
+            String response = Unirest.get(requestUrl).queryString("authKey", JGMRConfig.getInstance().getAuthCode()).asJson().getBody().toString();
+
+            ObjectMapper mapper = new ObjectMapper();
+            mapper.registerModule(new JodaModule());
+            List<Game> games = mapper.readValue(response, new TypeReference<List<Game>>() {});
+            Collections.sort(games);
+            Collections.reverse(games);
+            return games;
+        } catch (IOException ex) {
+            Logger.getLogger(GameController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnirestException ex) {
+            return new ArrayList<Game>();
+        }
+        return null;
+    }
+
 }
