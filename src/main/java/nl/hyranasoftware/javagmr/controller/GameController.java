@@ -142,12 +142,7 @@ public class GameController {
      * Returns a true value if the upload was successful
      */
     public boolean uploadSaveFile(Game game, String filename) {
-        try {
-            return doUpload(new FileInputStream(new File(JGMRConfig.getInstance().getPath() + "/" + filename)), game);
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(GameController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return false;
+        return uploadSaveFile(game, new File(JGMRConfig.getInstance().getPath() + "/" + filename));
     }
 
     /**
