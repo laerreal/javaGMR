@@ -63,6 +63,15 @@ public class gui extends Application {
 
         primaryStage.show();
 
+        if (JGMRConfig.getInstance().isStartMinimized()) {
+            Platform.setImplicitExit(false);
+
+            /* XXX: This behavior leads to main window blinked. But avoiding
+             * call `show` manages to a NullPointerException in
+             * JgmrGuiController.initializeSystemtray. */
+            primaryStage.hide();
+        }
+
     }
 
     /**

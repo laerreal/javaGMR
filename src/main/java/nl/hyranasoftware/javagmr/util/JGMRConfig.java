@@ -34,7 +34,7 @@ public class JGMRConfig {
     private boolean saveFileDialog;
     private boolean logToFile;
     private boolean dontAskMeToSave;
-    
+    private boolean startMinimized;
 
     @JsonIgnore
     List<SaveFile> saveFiles = new ArrayList();
@@ -60,6 +60,7 @@ public class JGMRConfig {
                     instance.logToFile = false;
                     instance.dontAskMeToSave = false;
                     instance.notificationFrequency = 15;
+                    instance.startMinimized = false;
                 }
             } catch (Exception ex) {
                 Logger.getLogger(JGMRConfig.class.getName()).log(Level.SEVERE, null, ex);
@@ -105,6 +106,15 @@ public class JGMRConfig {
 
     public void setMinimizeToTray(boolean minimizeToTray) {
         this.minimizeToTray = minimizeToTray;
+        saveConfig();
+    }
+
+    public boolean isStartMinimized() {
+        return startMinimized;
+    }
+
+    public void setStartMinimized(boolean startMinimized) {
+        this.startMinimized = startMinimized;
         saveConfig();
     }
 

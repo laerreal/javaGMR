@@ -36,6 +36,8 @@ public class SettingsDialogController implements Initializable {
     @FXML
     CheckBox cbSystemtray;
     @FXML
+    CheckBox cbStartMinimized;
+    @FXML
     CheckBox cbSaveLogInformation;
     @FXML
     CheckBox cbShowSave;
@@ -59,6 +61,7 @@ public class SettingsDialogController implements Initializable {
             tbAuthCode.setText(JGMRConfig.getInstance().getAuthCode());
         }
         cbSystemtray.selectedProperty().set(JGMRConfig.getInstance().isMinimizeToTray());
+        cbStartMinimized.selectedProperty().set(JGMRConfig.getInstance().isStartMinimized());
         cbFrequency.getItems().addAll(fifteenmin, thirtymin, sixtymin, never);
         switch (JGMRConfig.getInstance().getNotificationFrequency()) {
             case 0:
@@ -102,6 +105,7 @@ public class SettingsDialogController implements Initializable {
         JGMRConfig.getInstance().setLogToFile(cbSaveLogInformation.selectedProperty().get());
         JGMRConfig.getInstance().setNotificationsMinized(cbMinimized.selectedProperty().get());
         JGMRConfig.getInstance().setMinimizeToTray(cbSystemtray.selectedProperty().get());
+        JGMRConfig.getInstance().setStartMinimized(cbStartMinimized.selectedProperty().get());
         JGMRConfig.getInstance().setDontAskMeToSave(cbAskForSave.selectedProperty().get());
         Platform.setImplicitExit(!cbSystemtray.selectedProperty().get());
         String frequency = (String) cbFrequency.getSelectionModel().getSelectedItem();
